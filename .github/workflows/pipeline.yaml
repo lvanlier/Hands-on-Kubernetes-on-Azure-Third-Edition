@@ -57,13 +57,13 @@ jobs:
           helm upgrade website Chapter15/website --install \
             --set image.repository=$ARCNAME.azurecr.io/website/website \
             --set image.tag=${{ github.run_number }}
-      - name: Get service IP
-        run: |
-          PUBLICIP=""
-          while [ -z $PUBLICIP ]; do
-            echo "waiting for public IP.."
-            PUBLICIP=$(kubectl get service website -o 
-            jsonpath='{.status.loadbalancer.ingress[0].ip}')
-            [ -z "$PUBLICIP" ] && sleep 10
-            done
-            echo $PUBLICIP
+      #- name: Get service IP
+      #  run: |
+      #    PUBLICIP=""
+      #    while [ -z $PUBLICIP ]; do
+      #      echo "waiting for public IP.."
+      #      PUBLICIP=$(kubectl get service website -o 
+      #      jsonpath='{.status.loadbalancer.ingress[0].ip}')
+      #      [ -z "$PUBLICIP" ] && sleep 10
+      #      done
+      #      echo $PUBLICIP
