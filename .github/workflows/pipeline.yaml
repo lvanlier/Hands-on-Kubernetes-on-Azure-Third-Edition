@@ -64,6 +64,6 @@ jobs:
             echo "waiting for public IP.."
             PUBLICIP=$(kubectl get service website -o 
             jsonpath='{.status.loadbalancer.ingress[0].ip}')
-            [ -z "$PUBLICIP] && sleep 10
+            [ -z "$PUBLICIP" ] && sleep 10
             done
             echo $PUBLICIP
